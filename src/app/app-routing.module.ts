@@ -7,7 +7,7 @@ const routes: Routes = [
   {path:'auth', 
   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   {path:'hereos', 
-  loadChildren: () => import('./hereos/hereos.module').then(m => m.HereosModule)},
+  loadChildren: () => import('./hereos/heroes.module').then(m => m.HereosModule)},
   {path:'404', 
   component: ErrorPageComponent},
   {path:'**', 
