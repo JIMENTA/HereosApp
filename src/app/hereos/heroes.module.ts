@@ -12,6 +12,7 @@ import { HereosRoutingModule } from './heroes-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
 
@@ -23,7 +24,8 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     HeroeTarjetaComponent,
     HomeComponent,
     ListComponent,
-    ImagenPipe
+    ImagenPipe,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,
