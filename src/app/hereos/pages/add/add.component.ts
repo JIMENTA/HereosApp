@@ -65,7 +65,7 @@ export class AddComponent implements OnInit {
       //CREAR
     this.heroeService.addHero(this.heroe)
     .subscribe(heroe  => {
-      this.router.navigate(['/heroes/edit/', heroe.id])
+      this.router.navigate(['/hereos/edit/', heroe.id])
       this.showSnackBar('un nuevo heroe ha sido creado')
     })
     }
@@ -73,6 +73,8 @@ export class AddComponent implements OnInit {
   }
 
   delete(){
+
+  
 
    const dialog= this.dialog.open( ConfirmComponent,{
       width:'250px',
@@ -84,7 +86,7 @@ export class AddComponent implements OnInit {
       if(result){
         this.heroeService.deleteHero(this.heroe.id!)
         .subscribe( resp => {
-          this.router.navigate(['/heroes']);
+          this.router.navigate(['/hereos']);
         })
 
       }
