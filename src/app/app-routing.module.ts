@@ -7,13 +7,12 @@ const routes: Routes = [
 
   {path:'auth', 
   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
-  {path:'hereos', 
+  {path:'heroes', 
   loadChildren: () => import('./hereos/heroes.module').then(m => m.HereosModule), canLoad:[ AuthGuard ], canActivate:[ AuthGuard ]},
   {path:'404', 
   component: ErrorPageComponent},
   {path:'**', 
-  //component: ErrorPageComponent
-  redirectTo:'404'},
+  redirectTo:'auth'},
 
 ];
 

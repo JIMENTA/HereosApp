@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+
   get auth(){
     return this.authService.auth;
   }
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   
 
   logout(){
-    this.router.navigate(['./auth']);
+    this.router.navigate(['./auth/login']);
+    localStorage.clear()
   }
 }

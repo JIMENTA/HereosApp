@@ -1,41 +1,50 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment} from '@angular/router';
 import { Observable,tap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanLoad {
+export class AuthGuard implements CanLoad {
 
   constructor(private authService : AuthService, 
               private router : Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.authService.verificaAutenticacion()
-      .pipe(
-        tap( (estaAutenticado) =>{
-          if(!estaAutenticado){
-            this.router.navigate(['./auth//login'])
-          }
-        })
-      )
+    state: RouterStateSnapshot): Observable<boolean > | Promise<boolean > | boolean  {
+      
+      // if(this.authService.auth.id){
+        //   return true
+        // }
+        // console.log('bloqueado por canActivaate')
+        // return false
+        
+        return this.authService.verificaAutenticacion()
+        .pipe(
+          tap( authenticated => {
+            if(!authenticated){
+              this.router.navigate(['./auth/login'])
+            }
+          })
+        )
 
     }
     
   
 
-  canLoad(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> | Promise<boolean> {
+  canLoad(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> | Promise<boolean> | boolean {
 
     return this.authService.verificaAutenticacion()
     .pipe(
-      tap( (estaAutenticado) =>{
-        if(!estaAutenticado){
-          this.router.navigate(['./auth//login'])
+      tap( authenticated => {
+        if(!authenticated){
+          this.router.navigate(['./auth/login'])
         }
       })
     )
+
+
   }
 }

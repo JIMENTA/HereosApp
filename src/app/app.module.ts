@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ImagenPipe } from './hereos/pipes/imagen.pipe';
+
 
 @NgModule({
   declarations: [

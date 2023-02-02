@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     .subscribe ( resp => {
       
       if(resp.id){
-        this.router.navigate(['./hereos'])
+        this.router.navigate(['./heroes'])
       }
     })
 
